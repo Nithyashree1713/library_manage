@@ -12,7 +12,7 @@ const Navbar = () => {
     const fetchUserData = async () => {
         if (!currentUser) return;
 
-        const res = await fetch(`/api/user/${currentUser._id}`); // Use currentUser's ID
+        const res = await fetch(`https://library-manage-backend.onrender.com/api/user/${currentUser._id}`); // Use currentUser's ID
         const data = await res.json();
 
         if (data.success) {

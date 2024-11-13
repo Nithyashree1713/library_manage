@@ -15,7 +15,7 @@ export const usehostalstore = create((set) => ({
         if (!newAccount.name || !newAccount.email || !newAccount.password) {
             return { success: false, message: "Please fill in all fields." };
         }
-        const res = await fetch("/api/signup", {
+        const res = await fetch("https://library-manage-backend.onrender.com/api/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export const usehostalstore = create((set) => ({
         if (!account.email || !account.password) {
             return { success: false, message: "Please provide email and password." };
         }
-        const res = await fetch("/api/signin", {
+        const res = await fetch("https://library-manage-backend.onrender.com/api/signin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export const usehostalstore = create((set) => ({
         if (!newAccount.name || !newAccount.email || !newAccount.password) {
             return { success: false, message: "Please fill in all fields." };
         }
-        const res = await fetch("/api/signupadmin", {
+        const res = await fetch("https://library-manage-backend.onrender.com/api/signupadmin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export const usehostalstore = create((set) => ({
         if (!account.email || !account.password) {
             return { success: false, message: "Please provide email and password." };
         }
-        const res = await fetch("/api/signinadmin", {
+        const res = await fetch("https://library-manage-backend.onrender.com/api/signinadmin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export const usehostalstore = create((set) => ({
         if (!newBook.name || !newBook.author || !newBook.category|| !newBook.publishedDate || !newBook.image) {
             return { success: false, message: "Please fill in all fields." };
         }
-        const res = await fetch("/api/create", {
+        const res = await fetch("https://library-manage-backend.onrender.com/api/create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -104,7 +104,7 @@ export const usehostalstore = create((set) => ({
         return { success: data.success, message: data.message };
     },
     fetchBook: async () => {
-        const res = await fetch("/api/getbook", {
+        const res = await fetch("https://library-manage-backend.onrender.com/api/getbook", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -116,7 +116,7 @@ export const usehostalstore = create((set) => ({
         }
     },
     deletebook: async (pid) => {
-        const res = await fetch(`/api/delete/${pid}`, {
+        const res = await fetch(`https://library-manage-backend.onrender.com/api/delete/${pid}`, {
             method: "DELETE",
         });
         const data = await res.json();
@@ -130,7 +130,7 @@ export const usehostalstore = create((set) => ({
     orderBook: async (bookId) => {
         if (!bookId) return { success: false, message: "Invalid book ID" };
 
-        const res = await fetch(`/api/insert/${bookId}`, {
+        const res = await fetch(`https://library-manage-backend.onrender.com/api/insert/${bookId}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -146,7 +146,7 @@ export const usehostalstore = create((set) => ({
         }
     },
      fetch: async () => {
-        const res = await fetch("/api/getord", {
+        const res = await fetch("https://library-manage-backend.onrender.com/api/getord", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -161,7 +161,7 @@ export const usehostalstore = create((set) => ({
         if (!Form.name || !Form.email || !Form.pno||!Form.date||!Form.book) {
             return { success: false, message: "Please fill in all fields." };
         }
-        const res = await fetch("/api/form", {
+        const res = await fetch("https://library-manage-backend.onrender.com/api/form", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -175,7 +175,7 @@ export const usehostalstore = create((set) => ({
         return { success: data.success, message: data.message };
     },
     fetchform: async () => {
-        const res = await fetch("/api/form_details", {
+        const res = await fetch("https://library-manage-backend.onrender.com/api/form_details", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

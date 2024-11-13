@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import navigate hook
 import { usehostalstore } from '../store/hostal.js';
 import './Signin.css';
 
@@ -10,6 +11,7 @@ function Signinadmin() {
     const [message, setMessage] = useState("");
 
     const { signInAccountadmin } = usehostalstore();
+    const navigate = useNavigate(); // Use the navigate hook
 
     const signIn = async () => {
         const response = await signInAccountadmin(account);
@@ -17,19 +19,18 @@ function Signinadmin() {
         const { success, message, isAdmin } = response;
         setMessage(message);
         console.log(message);
-        
-        
+
         if (success) {
-         
-                window.location.href = "/admin";
-            
+            navigate("/admin"); // Navigate to /admin if sign-in is successful
         } else {
             setAccount({ email: "", password: "" });
         }
     };
-    
-    
-    
+
+    // Handle sign-up navigation with navigate
+    const navigateToSignup = () => {
+        navigate("/signupadmin"); // Use navigate to go to the signup page
+    };
 
     return (
         <div className="signin-container">
@@ -58,7 +59,12 @@ function Signinadmin() {
             </div>
             <button type="button" onClick={signIn}>SIGN IN</button>
             {message && <p className="message">{message}</p>}
-            <p>Don't have an account? <a href="/signupadmin">Sign up</a></p>
+            <p>
+                Don't have an account? 
+                <button onClick={navigateToSignup} className="signup-link">
+                    Sign up
+                </button>
+            </p>
         </div>
     );
 }

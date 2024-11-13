@@ -1,0 +1,44 @@
+.container {
+    padding: 20px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.books-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.complaint-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px; /* Reduced padding */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Slightly smaller shadow */
+    text-align: center;
+    height: 100%;
+    font-size: 0.9rem; /* Reduced font size */
+}
+
+.complaint-card img {
+    width: 100%;
+    height: auto;
+    max-height: 100px; /* Reduced max height */
+    object-fit: cover;
+    border-radius: 4px;
+}

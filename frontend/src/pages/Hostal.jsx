@@ -1,22 +1,31 @@
-import React from 'react'
-import './Hostal.css'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Hostal.css';
+
 function Hostal() {
+  // Initialize the navigate hook
+  const navigate = useNavigate();
+
+  // Handle the navigation based on user choice
+  const handleAdminLogin = () => {
+    navigate('/signinadmin'); // Navigate to the Admin login page
+  };
+
+  const handleCustomerLogin = () => {
+    navigate('/signin'); // Navigate to the Customer login page
+  };
+
   return (
-    <body>
-      
-    
     <div className='hostal'>
-      <h1 className='head'>Library</h1><br />
-      <h1 className='head2'>Login As</h1><br />
-      <form action="/signinadmin">
-      <button type='sumbit'>Admin</button>
-      </form><br />
-      <form action="/signin">
-      <button type='sumbit'>Customer</button>
-      </form>
+      <header>
+        <h1 className='head'>Library</h1>
+        <h2 className='head2'>Login As</h2>
+      </header>
+
+      <button onClick={handleAdminLogin}>Admin</button>
+      <button onClick={handleCustomerLogin}>Customer</button>
     </div>
-    </body>
-  )
+  );
 }
 
-export default Hostal
+export default Hostal;

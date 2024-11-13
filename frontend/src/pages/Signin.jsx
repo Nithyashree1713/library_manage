@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import { usehostalstore } from '../store/hostal.js';
 import './Signin.css';
 
@@ -10,6 +11,7 @@ function Signin() {
     const [message, setMessage] = useState("");
 
     const { signInAccount } = usehostalstore();
+    const navigate = useNavigate(); // Initialize navigate hook
 
     const signIn = async () => {
         const response = await signInAccount(account);
@@ -17,19 +19,18 @@ function Signin() {
         const { success, message, data } = response;
         setMessage(data);
         console.log(message);
-        
-        
+
         if (success) {
-          
-                window.location.href = "/home"; // Redirect to admin page for admins
-           
+            navigate("/home"); // Use navigate for redirecting to /home on successful sign-in
         } else {
             setAccount({ email: "", password: "" });
         }
     };
-    
-    
-    
+
+    // Handle navigate to signup page using navigate
+    const navigateToSignup = () => {
+        navigate("/signup"); // Navigate to /signup when the user clicks "Sign up"
+    };
 
     return (
         <div className="signin-container">
@@ -58,7 +59,12 @@ function Signin() {
             </div>
             <button type="button" onClick={signIn}>SIGN IN</button><br />
             {message && <p className="message">{message}</p>}
-            <p>Don't have an account? <a href="/signup">Sign up</a></p>
+            <p>
+                Don't have an account? 
+                <button onClick={navigateToSignup} className="signup-link">
+                    Sign up
+                </button>
+            </p>
         </div>
     );
 }
